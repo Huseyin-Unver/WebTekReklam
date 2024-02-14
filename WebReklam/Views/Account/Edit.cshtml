@@ -1,0 +1,56 @@
+﻿@using ApplicationCore_WebReklam.DTO_s.AccountDTO
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    Layout = null;
+    if (User.IsInRole("student") || User.IsInRole("teacher"))
+    {
+        Layout = "~/Views/Shared/LayoutAlternative.cshtml";
+    }
+    else if (User.IsInRole("admin"))
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
+}
+@model EditUserDTO
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Bilgileri Düzenle</h3>
+            </div>
+            <form asp-action="Edit">
+                <div class="card-body">
+                    <div>
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <button type="submit" class="btn btn-outline-primary float-end">Kaydet</button>
+                    @if (!User.IsInRole("student") && !User.IsInRole("teacher") && !User.IsInRole("admin"))
+                    {
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary float-start">Anasayfa</a>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

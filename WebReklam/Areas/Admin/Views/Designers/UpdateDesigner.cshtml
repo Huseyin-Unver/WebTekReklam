@@ -1,0 +1,50 @@
+﻿@using ApplicationCore_WebReklam.DTO_s.DesignerDTO
+@{
+    ViewData["Title"] = "Update Designer";
+}
+@model UpdateDesignerDTO
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Tasarımcı Güncelle</h3>
+            </div>
+            <form asp-action="UpdateDesigner">
+                <input type="hidden" asp-for="Id" />
+                <div class="card-body">
+                    <div>
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Description" class="form-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <button type="submit" class="btn btn-outline-primary float-end">Kaydet</button>
+                    <a asp-controller="Designers" asp-action="Index" class="btn btn-outline-secondary float-start">Geri Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

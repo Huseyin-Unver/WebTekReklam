@@ -1,0 +1,82 @@
+﻿@using WebReklam.Areas.Admin.Models
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<GetVillageVM>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">İlçe Listesi</h3>
+            </div>
+            <div class="card-body">
+                <div class="table table-responsive table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>İlçe Adı</th>
+                                <th>Durum</th>
+                                <th>Eklenme Tarihi</th>
+                                <th>Güncellenme Tarihi</th>
+                                <th>Güncelle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Village in Model)
+                            {
+                                <tr>
+                                    <td>@Village.Id</td>
+                                    <td>@Village.Name</td>
+                                    <td>@Village.Status</td>
+                                    <td>@Village.CreatedDate</td>
+                                    @if (Village.UpdatedDate != null)
+                                    {
+                                        <td>@Village.UpdatedDate</td>
+                                    }
+                                    else
+                                    {
+                                        <td> - </td>
+                                    }
+                                    <td>
+                                        <a asp-controller="Villages" asp-action="UpdateVillage" asp-route-id="@Village.Id" class="btn btn-outline-primary">Güncelle</a>
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@Village.Id">
+                                            Sil
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal-@Village.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Silme Uyarısı</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @Village.Name İlçesini silmek istediğinize emin misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                                        <a asp-controller="Villages" asp-action="DeleteVillage" asp-route-id="@Village.Id" class="btn btn-danger">Sil</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a asp-controller="Villages" asp-action="CreateVillage" class="btn btn-outline-dark d-block">Yeni İlçe Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>

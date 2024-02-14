@@ -1,0 +1,36 @@
+﻿@using ApplicationCore_WebReklam.DTO_s.AccountDTO
+@{
+    ViewData["Title"] = "Login";
+}
+@model LoginDTO
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Giriş Yap</h3>
+            </div>
+            <form asp-action="Login">
+                <div class="card-body">
+                    <div>
+                        <label asp-for="UserName" class="form-label"></label>
+                        <input asp-for="UserName" class="form-control" />
+
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" id="myInput" />
+                        <input type="checkbox" onclick="myFunction()">Şifreyi Göster
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <button type="submit" class="btn btn-outline-primary float-end">Giriş Yap</button>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-secondary float-start">Hesabın yok mu? Kayıt Ol!</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

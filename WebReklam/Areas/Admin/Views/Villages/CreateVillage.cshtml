@@ -1,0 +1,30 @@
+﻿@using ApplicationCore_WebReklam.DTO_s.VillageDTO
+@{
+    ViewData["Title"] = "CreateVillage";
+}
+@model CreateVillageDTO
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">İlçe Ekle</h3>
+            </div>
+            <form asp-action="CreateVillage" method="post">
+                <div class="card-body">
+                    <div>
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Lütfen ilçe adı giriniz..." />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <div>
+                        <button type="submit" class="btn btn-outline-success float-end">Kaydet</button>
+                        <a asp-controller="Villages" asp-action="Index" class="btn btn-outline-info float-start">Geri Dön</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

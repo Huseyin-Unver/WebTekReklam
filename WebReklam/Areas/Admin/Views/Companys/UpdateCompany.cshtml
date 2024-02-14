@@ -1,0 +1,40 @@
+﻿@using ApplicationCore_WebReklam.DTO_s.CompanyDTO
+@{
+    ViewData["Title"] = "Update Company";
+}
+@model UpdateCompanyDTO
+
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Şirket Güncelle</h3>
+            </div>
+            <form asp-action="UpdateCompany">
+                <input type="hidden" asp-for="Id" />
+                <div class="card-body">
+                    <div>
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Description" class="form-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Konum" class="form-label"></label>
+                        <input asp-for="Konum" class="form-control" />
+                        <span asp-validation-for="Konum" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <button type="submit" class="btn btn-outline-primary float-end">Kaydet</button>
+                    <a asp-controller="Companys" asp-action="Index" class="btn btn-outline-secondary float-start">Geri Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

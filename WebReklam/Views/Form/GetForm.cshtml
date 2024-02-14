@@ -1,0 +1,66 @@
+﻿@using ApplicationCore_WebReklam.DTO_s.RequestFormDTO
+@{
+    ViewData["Title"] = "GetForm";
+}
+@model CreateRequestFormDTO
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Talep Oluştur</h3>
+            </div>
+            <form asp-action="GetForm" method="post">
+
+                <div class="card-body">
+
+                    <div>
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="CompanyName" class="form-label"></label>
+                        <input asp-for="CompanyName" class="form-control" />
+                        <span asp-validation-for="CompanyName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="CompanyAddress" class="form-label"></label>
+                        <input asp-for="CompanyAddress" class="form-control" />
+                        <span asp-validation-for="CompanyAddress" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="Image" class="form-label"></label>
+                        <input type="file" multiple asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+
+
+
+                </div>
+                <div class="card-footer" style="height:50px;">
+                    <div>
+                        <button type="submit" class="btn btn-outline-success float-end">Gönder</button>
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-info float-start">Geri Dön</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+﻿@using WebReklam.Areas.Admin.Models
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<GetCompanyVM>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Şirket Listesi</h3>
+            </div>
+            <div class="card-body">
+                <div class="table table-responsive table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Şirket Adı</th>
+                                <th>Açıklama</th>
+                                <th>Konum</th>
+                                <th>Durum</th>
+                                <th>Eklenme Tarihi</th>
+                                <th>Güncellenme Tarihi</th>
+                                <th>Güncelle</th>
+                                <th>Sil</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Company in Model)
+                            {
+                                <tr>
+                                    <td>@Company.Id</td>
+                                    <td>@Company.Name</td>
+                                    <td>@Company.Description</td>
+                                    <td>@Company.Konum</td>
+                                    <td>@Company.Status</td>
+                                    <td>@Company.CreatedDate</td>
+                                    @if (Company.UpdatedDate != null)
+                                    {
+                                        <td>@Company.UpdatedDate</td>
+                                    }
+                                    else
+                                    {
+                                        <td> - </td>
+                                    }
+                                    <td>
+                                        <a asp-controller="Companys" asp-action="UpdateCompany" asp-route-id="@Company.Id" class="btn btn-outline-primary">Güncelle</a>
+                                    </td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal-@Company.Id">
+                                            Sil
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal-@Company.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Silme Uyarısı</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @Company.Name Şirketini silmek istediğinize emin misiniz?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                                                        <a asp-controller="Companys" asp-action="DeleteCompany" asp-route-id="@Company.Id" class="btn btn-danger">Sil</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a asp-controller="Companys" asp-action="CreateCompany" class="btn btn-outline-dark d-block">Yeni Şirket Ekle</a>
+            </div>
+        </div>
+    </div>
+</div>

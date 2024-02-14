@@ -1,0 +1,71 @@
+﻿@using WebReklam.Areas.Admin.Models
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<FormVM>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Talepler Listesi</h3>
+            </div>
+            <div class="card-body">
+                <div class="table table-responsive table-responsive-sm">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Ad</th>
+                                <th>Soyad</th>
+                                <th>Email</th>
+                                <th>Telefon Numarası</th>
+                                <th>Şirket Adı:</th>
+                                <th>Şirket Adresi:</th>
+                                <th>Durum</th>
+                                <th>Eklenme Tarihi</th>
+                                <th>Güncellenme Tarihi</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var form in Model)
+                            {
+                                <tr>
+
+                                    <td>@form.FirstName</td>
+                                    <td>@form.LastName</td>
+                                    <td>@form.Email</td>
+                                    <td>@form.PhoneNumber</td>
+                                    <td>@form.CompanyName</td>
+                                    <td>@form.CompanyAddress</td>
+                                    <td>@form.Image</td>
+
+                                    <td>@form.Status</td>
+                                    <td>@form.CreatedDate</td>
+                                    @if (form.UpdatedDate != null)
+                                    {
+                                        <td>@form.UpdatedDate</td>
+                                    }
+                                    else
+                                    {
+                                        <td> - </td>
+                                    }
+
+
+                                    <td>
+                                        <!-- Button trigger modal -->
+
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
