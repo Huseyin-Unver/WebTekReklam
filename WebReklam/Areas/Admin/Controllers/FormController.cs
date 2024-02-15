@@ -27,6 +27,7 @@ namespace WebReklam.Areas.Admin.Controllers
                         CompanyName = x.CompanyName,
                         Email = x.Email,
                         Image = x.Image,
+                        
                         PhoneNumber = x.PhoneNumber,
                         CreatedDate = x.CreatedDate,
                         UpdatedDate = x.UpdatedDate

@@ -3,10 +3,16 @@
     ViewData["Title"] = "Index";
 }
 @model List<GetCityVM>
+@if (User.IsInRole("admin"))
+{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="card">
+<div class="container-xxl position-relative bg-white d-flex p-0">
+    <div class="content">
+
+   
+        <div class="card text-center">
             <div class="card-header">
                 <h3 class="card-title">Şehir Listesi</h3>
             </div>

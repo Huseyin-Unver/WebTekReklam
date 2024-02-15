@@ -3,9 +3,12 @@
     ViewData["Title"] = "Index";
 }
 @model List<FormVM>
-
-<div class="row">
-    <div class="col-md-12">
+@if (User.IsInRole("admin"))
+{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="container-xxl position-relative bg-white d-flex p-0">
+    <div class="content">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Talepler Listesi</h3>
@@ -21,7 +24,7 @@
                                 <th>Telefon Numarası</th>
                                 <th>Şirket Adı:</th>
                                 <th>Şirket Adresi:</th>
-                                <th>Durum</th>
+                                <th>Fotoğrag</th>
                                 <th>Eklenme Tarihi</th>
                                 <th>Güncellenme Tarihi</th>
 
@@ -38,7 +41,16 @@
                                     <td>@form.PhoneNumber</td>
                                     <td>@form.CompanyName</td>
                                     <td>@form.CompanyAddress</td>
-                                    <td>@form.Image</td>
+                                    @if (form.Image is not null)
+                                    {
+                                        <td>
+                                            <a class="btn btn-success btn-sm" asp-action="DownloadFile" asp-route-filePath="@form.Image">İndir</a>
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td> - </td>
+                                    }
 
                                     <td>@form.Status</td>
                                     <td>@form.CreatedDate</td>
