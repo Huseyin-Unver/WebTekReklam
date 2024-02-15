@@ -9,11 +9,11 @@ namespace ApplicationCore_WebReklam.DTO_s.AccountDTO
 {
     public class LoginDTO
     {
-        [Display(Name = "Kullanıcı Adı")]
-        public string? UserName { get; set; }
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Display(Name = "Şifre")]
         [DataType(DataType.Password)]
-        public string? Password { get; set; }
+        public string Password { get; set; }
     }
 }

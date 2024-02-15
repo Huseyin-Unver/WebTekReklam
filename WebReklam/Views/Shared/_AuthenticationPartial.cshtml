@@ -1,0 +1,51 @@
+﻿@if (User?.Identity?.IsAuthenticated ?? false)
+{
+    @if (User.IsInRole("admin"))
+    {
+        <li class="nav-item ms-auto">
+            <a class="nav-link text-light btn btn-primary text-white" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin Paneli</a>
+        </li>
+    }
+    else
+    {
+
+        <li class="nav-item ms-auto mx-2">
+            <a asp-controller="Account" asp-action="Edit" class="btn btn-secondary">Kulllanıcı Bilgilerini Düzenle</a>
+        </li>
+        <li class="nav-item">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Çıkış Yap
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Çıkış Yapma Uyarısı</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Çıkış yapmak istediğinize emin misiniz?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                            <a asp-controller="Account" asp-action="LogOut" type="button" class="btn btn-danger">Çıkış Yap</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+}
+else
+{
+
+    <li class="nav-item ms-auto mx-2">
+        <a class="nav-link text-light btn btn-success" asp-area="" asp-controller="Account" asp-action="Register">Kayıt Ol</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-light btn btn-primary" asp-area="" asp-controller="Account" asp-action="Login">Giriş Yap</a>
+    </li>
+}

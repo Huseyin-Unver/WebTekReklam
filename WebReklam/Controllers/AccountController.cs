@@ -34,7 +34,7 @@ namespace WebReklam.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appUser = new AppUser { Email = model.Email, UserName = model.UserName };
+                var appUser = new AppUser { LastName = model.LastName, UserName =model.Email, FirstName = model.FirstName, Email = model.Email, PhoneNumber = model.PhoneNumber };
                 appUser.PasswordHash = _passwordHasher.HashPassword(appUser, model.Password);
                 IdentityResult result = await _userManager.CreateAsync(appUser);
 
@@ -67,16 +67,13 @@ namespace WebReklam.Controllers
         {
             if (ModelState.IsValid)
             {
-                var appUser = await _userManager.FindByNameAsync(model.UserName);
+                var appUser = await _userManager.FindByNameAsync(model.Email);
                 if (appUser != null)
                 {
                     Microsoft.AspNetCore.Identity.SignInResult signInResult = await _signInManager.PasswordSignInAsync(appUser.UserName, model.Password, false, false);
 
                     if (signInResult.Succeeded)
-                    {
-                        
-
-                        
+                    {              
                         if (await _userManager.IsInRoleAsync(appUser, "admin"))
                         {
                             TempData["Success"] = $"Hoşgeldin => Admin";
@@ -84,7 +81,7 @@ namespace WebReklam.Controllers
                         }
 
                         TempData["Success"] = $"Hoşgeldin => {appUser.UserName}";
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Home", new { userName = appUser.UserName });
                     }
                 }
             }

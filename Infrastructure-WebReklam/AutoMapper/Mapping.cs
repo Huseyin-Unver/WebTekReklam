@@ -1,9 +1,11 @@
-﻿using ApplicationCore_WebReklam.DTO_s.CityDTO;
+﻿using ApplicationCore_WebReklam.DTO_s.AccountDTO;
+using ApplicationCore_WebReklam.DTO_s.CityDTO;
 using ApplicationCore_WebReklam.DTO_s.CompanyDTO;
 using ApplicationCore_WebReklam.DTO_s.DesignerDTO;
 using ApplicationCore_WebReklam.DTO_s.RequestFormDTO;
 using ApplicationCore_WebReklam.DTO_s.VillageDTO;
 using ApplicationCore_WebReklam.Entities.Concrete;
+using ApplicationCore_WebReklam.Entities.UserEntities.Concrete;
 using AutoMapper;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,12 @@ namespace Infrastructure_WebReklam.AutoMapper
             CreateMap<Company, UpdateCompanyDTO>().ReverseMap();
             CreateMap<Company, CreateCompanyDTO>().ReverseMap();
             CreateMap<RequestForm, CreateRequestFormDTO>().ReverseMap();
+            CreateMap<AppUser, LoginDTO>().ReverseMap();
+            CreateMap<AppUser, RegisterDTO>().ReverseMap();
+            CreateMap<AppUser, EditUserDTO>().ReverseMap();
+
+
+
 
 
         }
