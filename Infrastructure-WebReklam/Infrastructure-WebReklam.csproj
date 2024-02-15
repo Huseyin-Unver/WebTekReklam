@@ -19,4 +19,8 @@
     <ProjectReference Include="..\ApplicationCore-WebReklam\ApplicationCore-WebReklam.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\UserServices\" />
+  </ItemGroup>
+
 </Project>
