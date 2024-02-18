@@ -111,8 +111,8 @@ namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
                         {
                             Id = "e3569982-6bcc-49ed-b599-6b67ae72d134",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "49738f0e-4361-4881-ba47-ce3b0a34097b",
-                            CreatedDate = new DateTime(2024, 2, 14, 14, 30, 19, 362, DateTimeKind.Local).AddTicks(8104),
+                            ConcurrencyStamp = "0ebee805-9d2a-46ee-911c-171508f4dc3b",
+                            CreatedDate = new DateTime(2024, 2, 16, 12, 27, 20, 821, DateTimeKind.Local).AddTicks(3060),
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -120,10 +120,10 @@ namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMİN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ053zwNKCBfyRb293qd7SWfc/0n6c/vtKO9H7ccl3vlXmK9tRM5UIwFpG914PUYFw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDLIC9G2bglcdz66i6MI8KSW0zvNd0flJYKoPiGrC5ewb063KnXqMkkJ6aLu2t32og==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a2ea0179-8b00-4c1e-8fe4-daa6716a6f65",
+                            SecurityStamp = "666889ee-9ada-4fb4-9a42-fe325eaafb9b",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"

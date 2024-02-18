@@ -23,32 +23,36 @@
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
+               
                 <h3 class="card-title">Bilgileri Düzenle</h3>
             </div>
             <form asp-action="Edit">
                 <div class="card-body">
+                    @Html.AntiForgeryToken()
                     <div>
-                        <label asp-for="UserName" class="form-label"></label>
-                        <input asp-for="UserName" class="form-control" />
-                        <span asp-validation-for="UserName" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Email" class="form-label"></label>
-                        <input asp-for="Email" class="form-control" />
+                        <label asp-for="Email" class="form-label" ></label>
+                        <input asp-for="Email" class="form-control" readonly />
                         <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div>
-                        <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" class="form-control" />
-                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <label asp-for="FirstName" class="form-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="LastName" class="form-label"></label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="PhoneNumber" class="form-label"></label>
+                        <input asp-for="PhoneNumber" class="form-control" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="card-footer" style="height:50px;">
                     <button type="submit" class="btn btn-outline-primary float-end">Kaydet</button>
-                    @if (!User.IsInRole("student") && !User.IsInRole("teacher") && !User.IsInRole("admin"))
-                    {
-                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary float-start">Anasayfa</a>
-                    }
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary float-start">Anasayfa</a>                   
                 </div>
             </form>
         </div>

@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
 {
     /// <inheritdoc />
-    public partial class InitalCreate : Migration
+    public partial class Identity : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -171,7 +171,7 @@ namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedDate", "DeletedDate", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "Status", "TwoFactorEnabled", "UpdatedDate", "UserName" },
-                values: new object[] { "e3569982-6bcc-49ed-b599-6b67ae72d134", 0, "49738f0e-4361-4881-ba47-ce3b0a34097b", new DateTime(2024, 2, 14, 14, 30, 19, 362, DateTimeKind.Local).AddTicks(8104), null, "admin@admin.com", false, "Admin", "Admin", true, null, "ADMIN@ADMİN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEJ053zwNKCBfyRb293qd7SWfc/0n6c/vtKO9H7ccl3vlXmK9tRM5UIwFpG914PUYFw==", "1234567890", false, "a2ea0179-8b00-4c1e-8fe4-daa6716a6f65", 1, false, null, "admin@admin.com" });
+                values: new object[] { "e3569982-6bcc-49ed-b599-6b67ae72d134", 0, "0ebee805-9d2a-46ee-911c-171508f4dc3b", new DateTime(2024, 2, 16, 12, 27, 20, 821, DateTimeKind.Local).AddTicks(3060), null, "admin@admin.com", false, "Admin", "Admin", true, null, "ADMIN@ADMİN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEDLIC9G2bglcdz66i6MI8KSW0zvNd0flJYKoPiGrC5ewb063KnXqMkkJ6aLu2t32og==", "1234567890", false, "666889ee-9ada-4fb4-9a42-fe325eaafb9b", 1, false, null, "admin@admin.com" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",

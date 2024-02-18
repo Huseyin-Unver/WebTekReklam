@@ -5,14 +5,18 @@
         <li class="nav-item ms-auto">
             <a class="nav-link text-light btn btn-primary text-white" asp-area="Admin" asp-controller="Cities" asp-action="Index">Admin Paneli</a>
         </li>
-        <a>Merhaba</a>
+       
     }
     else
-    {
+{
 
         <li class="nav-item ms-auto mx-2">
             <a asp-controller="Account" asp-action="Edit" class="btn btn-secondary">Kulllanıcı Bilgilerini Düzenle</a>
         </li>
+        <li class="nav-item">
+            <a asp-controller="Account" asp-action="PasswordChange" class="btn btn-outline-primary">Şifre Değiştir</a>
+        </li>
+       
         <li class="nav-item">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">

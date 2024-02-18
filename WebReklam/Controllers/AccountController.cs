@@ -1,5 +1,6 @@
 ﻿using ApplicationCore_WebReklam.DTO_s.AccountDTO;
 using ApplicationCore_WebReklam.Entities.UserEntities.Concrete;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,10 @@ namespace WebReklam.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IPasswordHasher<AppUser> _passwordHasher;
-    
+        private readonly IMapper _mapper;
+
+
+
 
         public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IPasswordHasher<AppUser> passwordHasher)
         {
@@ -99,33 +103,47 @@ namespace WebReklam.Controllers
             return View(model);
         }
 
-        [HttpPost, ValidateAntiForgeryToken]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditUserDTO model)
         {
             if (ModelState.IsValid)
             {
-                //var appUser = await _userManager.FindByNameAsync(HttpContext.User.Identity.Name);
                 var userId = _userManager.GetUserId(HttpContext.User);
                 var appUser = await _userManager.FindByIdAsync(userId);
-                appUser.UserName = model.UserName;
-                appUser.Email = model.Email;
-                if (model.Password != null)
-                {
-                    appUser.PasswordHash = _passwordHasher.HashPassword(appUser, model.Password);
-                }
 
-                var result = await _userManager.UpdateAsync(appUser);
-                if (result.Succeeded)
+                if (appUser != null)
                 {
-                    TempData["Success"] = "Profiliniz güncellendi! Tekrar giriş yapınız!";
-                    //return RedirectToAction("LogOut");
+                    appUser.UserName = model.Email;
+                    appUser.FirstName = model.FirstName;
+                    appUser.LastName = model.LastName;
+                    appUser.PhoneNumber = model.PhoneNumber;
 
+                    if (!string.IsNullOrEmpty(model.Password))
+                    {
+                        appUser.PasswordHash = _passwordHasher.HashPassword(appUser, model.Password);
+                    }
+
+                    var result = await _userManager.UpdateAsync(appUser);
+
+                    if (result.Succeeded)
+                    {
+                        TempData["Success"] = "Profiliniz güncellendi! Tekrar giriş yapınız!";
+                        // Giriş yapma işlemi gibi bir işlem yapılacaksa burada yönlendirme yapılabilir.
+                        // Örneğin:
+                        // return RedirectToAction("LogOut");
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Profiliniz güncellenemedi!";
+                    }
                 }
                 else
                 {
-                    TempData["Error"] = "Profiliniz güncellenemedi!";
+                    TempData["Error"] = "Kullanıcı bulunamadı!";
                 }
             }
+
             return View(model);
         }
 
@@ -135,5 +153,51 @@ namespace WebReklam.Controllers
             TempData["Warning"] = "Başarılı bir şekilde çıkış yaptınız!";
             return RedirectToAction("Login");
         }
+
+        [Authorize]
+        [HttpGet]
+        public ViewResult PasswordChange()
+        {
+            return View();
+        }
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> PasswordChange(UserPasswordChangeDTO userPasswordChangeDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(HttpContext.User);
+                var isVerified = await _userManager.CheckPasswordAsync(user, userPasswordChangeDTO.CurrentPassword);
+
+                if (isVerified)
+                {
+                    var result = await _userManager.ChangePasswordAsync(user, userPasswordChangeDTO.CurrentPassword, userPasswordChangeDTO.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        await _userManager.UpdateSecurityStampAsync(user);
+                        await _signInManager.SignOutAsync();
+                        await _signInManager.PasswordSignInAsync(user, userPasswordChangeDTO.NewPassword, true, false);
+                        TempData["Success"] = "Şifreniz Başarıyla güncellendi!";
+                        return View();
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Girmiş olduğunuz Şifre yanlıştır. lütfen kontrol ederek tekrar deneyiniz.";
+                        return View(userPasswordChangeDTO);
+                    }
+
+                }
+                else
+                {
+                    TempData["Error"] = "Girmiş olduğunuz Şifre yanlıştır. lütfen kontrol ederek tekrar deneyiniz.";
+                    return View(userPasswordChangeDTO);
+                }
+            }
+            else
+            {
+                return View(userPasswordChangeDTO);
+            }
+        }
+
+
     }
 }

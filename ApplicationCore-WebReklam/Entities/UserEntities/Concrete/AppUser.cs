@@ -14,6 +14,8 @@ namespace ApplicationCore_WebReklam.Entities.UserEntities.Concrete
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+     
+
 
         private Status _status = Status.Active;
         private DateTime _createdDate = DateTime.Now;
