@@ -31,6 +31,8 @@ namespace Infrastructure_WebReklam.AutoMapper
             CreateMap<AppUser, LoginDTO>().ReverseMap();
             CreateMap<AppUser, RegisterDTO>().ReverseMap();
             CreateMap<AppUser, EditUserDTO>().ReverseMap();
+            CreateMap<AppUser, UserPasswordChangeDTO>().ReverseMap();
+
 
 
 

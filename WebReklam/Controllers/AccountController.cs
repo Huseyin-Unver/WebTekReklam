@@ -156,11 +156,13 @@ namespace WebReklam.Controllers
 
         [Authorize]
         [HttpGet]
+
         public ViewResult PasswordChange()
         {
-            return View();
+           return View();
         }
-        [HttpPost, ValidateAntiForgeryToken]
+        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> PasswordChange(UserPasswordChangeDTO userPasswordChangeDTO)
         {
             if (ModelState.IsValid)
@@ -181,14 +183,15 @@ namespace WebReklam.Controllers
                     }
                     else
                     {
-                        TempData["Error"] = "Girmiş olduğunuz Şifre yanlıştır. lütfen kontrol ederek tekrar deneyiniz.";
+                        ModelState.AddModelError("", errorMessage: "Girmiş olduğunuz şifre yanlıştır. Lütfen kontrol ederek tekrar deneyiniz.");
                         return View(userPasswordChangeDTO);
                     }
 
                 }
                 else
                 {
-                    TempData["Error"] = "Girmiş olduğunuz Şifre yanlıştır. lütfen kontrol ederek tekrar deneyiniz.";
+                    ModelState.AddModelError("", errorMessage: "Girmiş olduğunuz şifre yanlıştır. Lütfen kontrol ederek tekrar deneyiniz.");
+
                     return View(userPasswordChangeDTO);
                 }
             }

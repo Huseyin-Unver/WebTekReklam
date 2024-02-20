@@ -12,6 +12,7 @@ namespace ApplicationCore_WebReklam.DTO_s.AccountDTO
         //[Display(Name = "Kullanıcı Adı")]
         //public string UserName { get; set; }
         [Display(Name = "Telefon numarası")]
+
         public string PhoneNumber { get; set; }
 
         [Display(Name = "Ad")]

@@ -34,7 +34,7 @@ namespace ApplicationCore_WebReklam.DTO_s.AccountDTO
         [MaxLength(30, ErrorMessage = "{0} {1} karakterden büyük olmamalıdır.")]
         [MinLength(5, ErrorMessage = "{0} {1} karakterden küçük olmamalıdır.")]
         [DataType(DataType.Password)]
-        //[Compare("NewPassword", ErrorMessage = "Girdiğiniz yeni şifreler birbirleriyle uyuşmuyor.")]
+        [Compare("NewPassword", ErrorMessage = "Girdiğiniz yeni şifreler birbirleriyle uyuşmuyor.")]
 
 
         public string RepeatPassword { get; set; }

@@ -1,8 +1,10 @@
 ﻿using ApplicationCore_WebReklam.Entities.UserEntities.Concrete;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,6 +29,7 @@ namespace ApplicationCore_WebReklam.DTO_s.AccountDTO
 
         [Display(Name = "E-Mail")]
         public string Email { get; set; }
+       
 
         public EditUserDTO() { }
 
@@ -37,9 +40,6 @@ namespace ApplicationCore_WebReklam.DTO_s.AccountDTO
             FirstName = user.FirstName;
             LastName = user.LastName;
             PhoneNumber = user.PhoneNumber;
-
-
         }
     }
 }
-
