@@ -4,6 +4,10 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mail;
+using System.Net;
+using System.Web;
+using WebReklam.Model;
 
 namespace WebReklam.Controllers
 {
@@ -107,6 +111,7 @@ namespace WebReklam.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditUserDTO model)
         {
+            
             if (ModelState.IsValid)
             {
                 var userId = _userManager.GetUserId(HttpContext.User);
@@ -114,30 +119,15 @@ namespace WebReklam.Controllers
 
                 if (appUser != null)
                 {
-                    appUser.UserName = model.Email;
+                   
                     appUser.FirstName = model.FirstName;
                     appUser.LastName = model.LastName;
                     appUser.PhoneNumber = model.PhoneNumber;
-
-                    if (!string.IsNullOrEmpty(model.Password))
-                    {
-                        appUser.PasswordHash = _passwordHasher.HashPassword(appUser, model.Password);
-                    }
-
-                    var result = await _userManager.UpdateAsync(appUser);
-
-                    if (result.Succeeded)
-                    {
-                        TempData["Success"] = "Profiliniz güncellendi! Tekrar giriş yapınız!";
-                        // Giriş yapma işlemi gibi bir işlem yapılacaksa burada yönlendirme yapılabilir.
-                        // Örneğin:
-                        // return RedirectToAction("LogOut");
-                    }
-                    else
-                    {
-                        TempData["Error"] = "Profiliniz güncellenemedi!";
-                    }
+                    await _userManager.UpdateSecurityStampAsync(appUser);
+                    return RedirectToAction("Index", "Home");
                 }
+                   
+                
                 else
                 {
                     TempData["Error"] = "Kullanıcı bulunamadı!";
@@ -163,6 +153,7 @@ namespace WebReklam.Controllers
         }
         [Authorize]
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> PasswordChange(UserPasswordChangeDTO userPasswordChangeDTO)
         {
             if (ModelState.IsValid)
@@ -200,7 +191,59 @@ namespace WebReklam.Controllers
                 return View(userPasswordChangeDTO);
             }
         }
+        public IActionResult PasswordReset()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> PasswordReset(ResetPasswordViewModel model)
+        {
+            AppUser user = await _userManager.FindByEmailAsync(model.Email);
+            if (user != null)
+            {
+                string resetToken = await _userManager.GeneratePasswordResetTokenAsync(user);
 
+                MailMessage mail = new MailMessage();
+                mail.IsBodyHtml = true;
+                mail.To.Add(user.Email);
+                mail.From = new MailAddress("unverler123@gmail.com", "Şifre Güncelleme", System.Text.Encoding.UTF8);
+                mail.Subject = "Şifre Güncelleme Talebi";
+                mail.Body = $"<a target=\"_blank\" href=\"https://localhost:7285{Url.Action("UpdatePassword", "Account", new { userId = user.Id, token = HttpUtility.UrlEncode(resetToken) })}\">Yeni şifre talebi için tıklayınız</a>";
+                mail.IsBodyHtml = true;
+                SmtpClient smp = new SmtpClient();
+                smp.Credentials = new NetworkCredential("unverler123@gmail.com", "lkljreformremoje");
+                smp.Port = 587;
+                smp.Host = "smtp.gmail.com";
+                smp.EnableSsl = true;
+                smp.Send(mail);
 
+                ViewBag.State = true;
+            }
+            else
+                ViewBag.State = false;
+
+            return View();
+        }
+
+        [HttpGet("[action]/{userId}/{token}")]
+        public IActionResult UpdatePassword(string userId, string token)
+        {
+            return View();
+        }
+        [HttpPost("[action]/{userId}/{token}")]
+        public async Task<IActionResult> UpdatePassword(UpdatePasswordViewModel model, string userId, string token)
+        {
+            AppUser user = await _userManager.FindByIdAsync(userId);
+            IdentityResult result = await _userManager.ResetPasswordAsync(user, HttpUtility.UrlDecode(token), model.Password);
+            if (result.Succeeded)
+            {
+                ViewBag.State = true;
+                await _userManager.UpdateSecurityStampAsync(user);
+            }
+            else
+                ViewBag.State = false;
+            return View();
+        }
     }
 }
+

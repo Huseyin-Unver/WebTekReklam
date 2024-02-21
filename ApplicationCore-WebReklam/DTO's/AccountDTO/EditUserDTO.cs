@@ -20,23 +20,22 @@ namespace ApplicationCore_WebReklam.DTO_s.AccountDTO
         [Display(Name = "Soyad")]
         public string LastName { get; set; }
 
-        [Display(Name = "Şifre")]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        
+       
 
         [Display(Name = "Telefon numarası")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "E-Mail")]
         public string Email { get; set; }
-       
 
+       
         public EditUserDTO() { }
 
         public EditUserDTO(AppUser user)
         {
             Email = user.UserName;
-            Password = user.PasswordHash;
+         
             FirstName = user.FirstName;
             LastName = user.LastName;
             PhoneNumber = user.PhoneNumber;
