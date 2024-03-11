@@ -14,12 +14,12 @@ namespace ApplicationCore_WebReklam.Entities.Concrete
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string? Image { get; set; }
-
-        [NotMapped]
-        public IFormFile? Project { get; set; }
+        public string PhoneNumber { get; set; }   
         public string CompanyName { get; set; }
-        public string CompanyAddress { get; set; }
+
+        public string City { get; set; }
+        public string Mall { get; set; }
+        public string Message { get; set; }
+
     }
 }

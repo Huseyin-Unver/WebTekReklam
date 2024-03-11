@@ -23,12 +23,12 @@ namespace WebReklam.Areas.Admin.Controllers
 
                         FirstName = x.FirstName,
                         LastName = x.LastName,
-                        CompanyAddress = x.CompanyAddress,
+                       City = x.City,
+                        Mall = x.Mall,                     
+                           Message = x.Message,
                         CompanyName = x.CompanyName,
                         Email = x.Email,
-                        Image = x.Image,
-                        
-                        PhoneNumber = x.PhoneNumber,
+                     PhoneNumber = x.PhoneNumber,
                         CreatedDate = x.CreatedDate,
                         UpdatedDate = x.UpdatedDate
                     },

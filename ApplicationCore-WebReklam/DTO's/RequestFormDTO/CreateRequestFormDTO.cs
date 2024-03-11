@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ApplicationCore_WebReklam.Entities.Concrete;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,8 +15,10 @@ namespace ApplicationCore_WebReklam.DTO_s.RequestFormDTO
         public string LastName { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
-        public string? Image { get; set; }
         public string CompanyName { get; set; }
-        public string CompanyAddress { get; set; }
+        public string Message { get; set; }
+
+        public int VilaggeId { get; set; }
+
     }
 }

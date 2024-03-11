@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
 {
     [DbContext(typeof(AppIdentityDbContext))]
-    [Migration("20240216092720_Identity")]
-    partial class Identity
+    [Migration("20240304142545_initalCreate")]
+    partial class initalCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -114,8 +114,8 @@ namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
                         {
                             Id = "e3569982-6bcc-49ed-b599-6b67ae72d134",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0ebee805-9d2a-46ee-911c-171508f4dc3b",
-                            CreatedDate = new DateTime(2024, 2, 16, 12, 27, 20, 821, DateTimeKind.Local).AddTicks(3060),
+                            ConcurrencyStamp = "8ddd8a15-d0a7-4e95-830d-ce98bc5e21aa",
+                            CreatedDate = new DateTime(2024, 3, 4, 17, 25, 45, 546, DateTimeKind.Local).AddTicks(99),
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             FirstName = "Admin",
@@ -123,10 +123,10 @@ namespace Infrastructure_WebReklam.Migrations.AppIdentityDb
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@ADMİN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDLIC9G2bglcdz66i6MI8KSW0zvNd0flJYKoPiGrC5ewb063KnXqMkkJ6aLu2t32og==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBgtT9z+gtwCHtfyWMaq6B+scpZ2zFc5wEGahkACXpyP/tIW3FhrsgNBBOf2WvrWlQ==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "666889ee-9ada-4fb4-9a42-fe325eaafb9b",
+                            SecurityStamp = "9b181ba0-2f1e-4af5-97c8-0ba6e3b517f8",
                             Status = 1,
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"

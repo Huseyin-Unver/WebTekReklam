@@ -4,63 +4,46 @@
 }
 @model CreateRequestFormDTO
 
-<div class="row">
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Talep Oluştur</h3>
+
+<div class="bg-dark-half"></div>
+<div class="container-fluid bid-container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row mx-0 bid-form-container">
+                <div class="col-lg-12 titles">
+                    <h3>Talep Formu</h3>
+                    <span>Satış ekibimiz size yardımcı olmaktan mutluluk duyacaktır.</span>
+                </div>
+                <div class="col-lg-3">
+                    <div class="bid-form-section">
+                        <h4 class="bid-section-title mb-3">Reklam vermek istediğiniz il ve ya illeri seçiniz.</h4>
+                        <select onchange="printMsg(event)" id="my-select" asp-items=(SelectList)@ViewData["Cities"] class="form-control">
+                            <option selected disabled>Şehirler</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="bid-form-section mall-list">
+                        <h4 class="bid-section-title mb-3">Reklam vermek istediğiniz AVM’ler seçtiğiniz illere göre filtrelenecektir.</h4>
+                        <select onchange="sendVillage(event)" id="cities" class="form-control">
+                            <option selected disabled>Lütfen bir şehir seçiniz</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <form asp-action="GetForm" id="bid-form" class="bid-form-section">
+                        <input type="hidden" asp-for="VilaggeId" id="villageId" />
+                        <h4 class="bid-section-title">Talep Formu<br /><br /></h4>
+                        <input name="firstName" asp-for="FirstName" class="form-control placeholder-white"  placeholder="Ad" />
+                        <input name="lastName" asp-for="LastName" class="form-control placeholder-white"  placeholder="Soyad" />
+                        <input name="email" asp-for="Email" class="form-control placeholder-white" placeholder="E-Posta" />
+                        <input name="phoneNumber" asp-for="PhoneNumber" class="form-control placeholder-white" placeholder="Telefon" />
+                        <input name="companyName" asp-for="CompanyName" class="form-control placeholder-white" placeholder="Şirket" />
+                        <textarea name="message" asp-for="Message" class="form-control placeholder-white"  placeholder="Mesajınız"></textarea>
+                        <button type="submit" id="send_button" class="btn btn-outline btn-rounded bid-form-btn active">Gönder</button>
+                    </form>
+                </div>
             </div>
-            <form asp-action="GetForm" method="post">
-
-                <div class="card-body">
-
-                    <div>
-                        <label asp-for="FirstName" class="form-label"></label>
-                        <input asp-for="FirstName" class="form-control" />
-                        <span asp-validation-for="FirstName" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="LastName" class="form-label"></label>
-                        <input asp-for="LastName" class="form-control" />
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Email" class="form-label"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="PhoneNumber" class="form-label"></label>
-                        <input asp-for="PhoneNumber" class="form-control" />
-                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                    </div>
-
-                    <div>
-                        <label asp-for="CompanyName" class="form-label"></label>
-                        <input asp-for="CompanyName" class="form-control" />
-                        <span asp-validation-for="CompanyName" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="CompanyAddress" class="form-label"></label>
-                        <input asp-for="CompanyAddress" class="form-control" />
-                        <span asp-validation-for="CompanyAddress" class="text-danger"></span>
-                    </div>
-                    <div>
-                        <label asp-for="Image" class="form-label"></label>
-                        <input type="file" multiple asp-for="Image" class="form-control" />
-                        <span asp-validation-for="Image" class="text-danger"></span>
-                    </div>
-
-
-
-                </div>
-                <div class="card-footer" style="height:50px;">
-                    <div>
-                        <button type="submit" class="btn btn-outline-success float-end">Gönder</button>
-                        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-info float-start">Geri Dön</a>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
 </div>

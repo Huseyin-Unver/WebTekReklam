@@ -19,6 +19,7 @@ namespace WebReklam
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddControllers();
             builder.Services.AddMvc();
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
@@ -84,6 +85,10 @@ namespace WebReklam
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "api/{controller=Villages}/{action=Deneme}/{id?}");
 
             app.Run();
         }

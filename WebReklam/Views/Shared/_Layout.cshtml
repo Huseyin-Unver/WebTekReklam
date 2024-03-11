@@ -4,9 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WebReklam</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WebReklam.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animate.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/aos.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap-grid.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap-reboot.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/fontawesome.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/fonts.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" asp-append-version="true">
+
 </head>
 <body>
     <header>
@@ -37,7 +46,7 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container col-md-12">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -48,9 +57,16 @@
             &copy; 2024 - WebReklam - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+     <script type="text/javascript" src="~/js/jquery.validation.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/aos.js"></script>
+    <script type="text/javascript" src="~/js/functions.js"></script>
+    <script type="text/javascript" src="~/js/jquery.validation.js"></script>
+  
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

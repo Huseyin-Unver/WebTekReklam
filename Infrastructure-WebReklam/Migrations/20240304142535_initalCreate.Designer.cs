@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure_WebReklam.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240216092707_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240304142535_initalCreate")]
+    partial class initalCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -142,7 +142,7 @@ namespace Infrastructure_WebReklam.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CompanyAddress")
+                    b.Property<string>("City")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -168,6 +168,14 @@ namespace Infrastructure_WebReklam.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Mall")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Message")
                         .IsRequired()
                         .HasColumnType("text");
 

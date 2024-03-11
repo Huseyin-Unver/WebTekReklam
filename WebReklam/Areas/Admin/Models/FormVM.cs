@@ -10,7 +10,11 @@ namespace WebReklam.Areas.Admin.Models
         public string PhoneNumber { get; set; }
         public string Image { get; set; }
         public string CompanyName { get; set; }
-        public string CompanyAddress { get; set; }
+        public string Mall { get; set; }
+        public string Message { get; set; }
+        public string City { get; set; }
+
+
         public DateTime CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public Status Status { get; set; }

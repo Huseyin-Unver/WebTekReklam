@@ -9,7 +9,11 @@ namespace ApplicationCore_WebReklam.Entities.Concrete
 {
     public class City : BaseEntity
     {
-        public string Name { get; set; }
+     
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+
+        public virtual ICollection<Village> Avm { get; set; }
 
     }
 }

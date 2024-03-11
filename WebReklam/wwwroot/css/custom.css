@@ -1,0 +1,175 @@
+
+
+.bid-form-container {
+    border: 1px solid #E3E3E3;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    padding: 25px 10px;
+    overflow: auto;
+
+}
+
+    .bid-form-container .titles h3 {
+        color: #03A8EC;
+        font-family: Gilroy-Bold, Calibri;
+        font-size: 20px;
+        display: block;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .bid-form-container .titles span {
+        margin-bottom: 25px;
+        display: block;
+        width: 100%;
+        color: #6A6A6A;
+        font-family: Gilroy-Medium, Calibri;
+        font-size: 16px;
+    }
+
+    .bid-form-container .bid-section-title {
+        color: #00A7E6;
+        font-family: Gilroy-Bold, Calibri;
+        font-size: 16px;
+    }
+
+    .bid-form-container .bid-form-section {
+        border: 1px solid #E3E3E3;
+        border-radius: 2px;
+        padding: 25px;
+        height: 100%;
+        align-items: baseline;
+    }
+
+        .bid-form-container .bid-form-section .bid-city-btn-all,
+        .bid-form-container .bid-form-section .bid-city-btn {
+            border: 1px solid #CCCCCC;
+            border-radius: 25px;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            font-family: Gilroy-Regular, Calibri;
+            font-size: 16px;
+            color: #6A6A6A;
+            padding: 12px 0 8px 0;
+            transition: all .4s ease;
+            line-height: 24px;
+        }
+
+        .bid-form-container .bid-form-section .bid-city-btn-all {
+            font-family: Gilroy-Bold, Calibri;
+            color: #6A6A6A;
+        }
+
+            .bid-form-container .bid-form-section .bid-city-btn-all.active,
+            .bid-form-container .bid-form-section .bid-city-btn.active {
+                border: 1px solid #1E3741;
+                background-color: #1E3741;
+                color: #fff;
+            }
+
+
+        .bid-form-container .bid-form-section.mall-list .bid-avm-btn {
+            transition: all .4s ease;
+            border: 1px solid #F2F2F2;
+            border-radius: 25px;
+            font-family: Gilroy-Regular, Calibri;
+            font-size: 16px;
+            color: #ccc;
+            padding: 12px 0 8px 0;
+            width: 48%;
+            float: left;
+            margin-bottom: 10px;
+            background-color: #F2F2F2;
+            cursor: default;
+        }
+
+            .bid-form-container .bid-form-section.mall-list .bid-avm-btn:nth-child(2n) {
+                margin-right: 1%;
+            }
+
+            .bid-form-container .bid-form-section.mall-list .bid-avm-btn:nth-child(2n+1) {
+                margin-left: 1%;
+            }
+
+            .bid-form-container .bid-form-section.mall-list .bid-avm-btn:last-child {
+                margin-bottom: 25px !important;
+            }
+
+
+            .bid-form-container .bid-form-section.mall-list .bid-avm-btn.selectable {
+                border: 1px solid #CCCCCC;
+                background-color: #FFFFFF;
+                color: #6A6A6A;
+                cursor: pointer;
+            }
+
+            .bid-form-container .bid-form-section.mall-list .bid-avm-btn.active {
+                border: 1px solid #1E3741;
+                background-color: #1E3741;
+                color: #fff;
+                cursor: pointer;
+            }
+
+        .bid-form-container .bid-form-section .bid-form-btn {
+            border: 1px solid #00A7E6;
+            border-radius: 25px;
+            color: #00A7E6;
+            margin-top: 10px;
+            display: block;
+            font-family: Gilroy-Medium, Calibri;
+            font-size: 16px;
+            line-height: 30px;
+            overflow: hidden;
+            transition: all .4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+            .bid-form-container .bid-form-section .bid-form-btn:hover {
+                color: #fff;
+            }
+
+            .bid-form-container .bid-form-section .bid-form-btn:before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                background: #00A7E6;
+                position: absolute;
+                left: -100%;
+                bottom: 0;
+                border-radius: 30px;
+                transition: all .4s ease;
+                z-index: -1;
+            }
+
+            .bid-form-container .bid-form-section .bid-form-btn:hover::before {
+                left: 0;
+            }
+
+        .bid-form-container .bid-form-section .form-control {
+            height: 50px;
+            width: 350px;
+            border: 1px solid #E0E0E0;
+            border-radius: 2px;
+            color: #A6A6A6;
+            font-family: Gilroy-Medium, Calibri;
+            font-size: 16px;
+            box-shadow: none;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+            .bid-form-container .bid-form-section .form-control.error {
+                box-shadow: 0 0 5px 0 #ff9090;
+                border: 1px solid #ff8d8d;
+            }
+
+        .bid-form-container .bid-form-section label {
+            display: none !important;
+        }
+
+        .bid-form-container .bid-form-section textarea.form-control {
+            height: calc(100% - 290px);
+        }
+
